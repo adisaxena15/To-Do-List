@@ -1,0 +1,447 @@
+
+html, body {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Poppins', sans-serif;
+    background-image: linear-gradient(#e95b5b,#db6771, #d45e5e, #a04c4c);
+}
+
+#main-container {
+    border-radius: 20px;
+    box-shadow: 0 15px 20px rgba(0, 0, 0, 0.2), 0 15px 20px rgba(0, 0, 0, 0.19);
+    width: 100%; 
+    margin: auto;
+    padding: 20px; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Poppins', sans-serif;
+    position: relative;
+}
+
+#add-card {
+    position: relative;
+    width: 12rem; /* Adjust width as needed */
+    height: 40px;
+    border-radius: 5px;
+    border: 2px solid #323232;
+    background-color: #ccc;
+    color: #323232;
+    cursor: pointer;
+    display: flex;
+    align-items: center; 
+    justify-content: center; 
+    box-shadow: 4px 4px #323232;
+    font-family: 'Poppins', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    padding: 0 20px;
+    margin: 10px 0;
+    outline: none;
+    transition: transform 0.1s ease-in-out;
+}
+
+#add-card:hover {
+    background-color: #8052ec;
+    transform: scale(0.9);
+}
+
+#cards-container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+.card {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 15px 20px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    width: 400px;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    position: relative;
+    overflow: hidden;
+    min-height: 150px;
+    box-sizing: border-box;
+}
+.card .delete-card{
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    height: 35px;
+    width: 35px;
+    font-size: 22px;
+    cursor: pointer;
+    color: #d45e5e;
+    border-radius: 5px;
+    border: 2px solid #323232;
+    background-color: #ccc;
+    color: #323232;
+    box-shadow: 4px 4px #323232;
+    cursor: pointer;
+    display: flex;
+    align-items: center; 
+    justify-content: center; 
+}
+
+.card .delete-card:hover{
+    background-color: #8052ec;
+    transform: scale(0.9);
+}
+
+.card .header[contenteditable="true"] {
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #323232;
+}
+
+.card .newtask {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    width: 100%;
+}
+.card .newtask input {
+    flex-grow: 1;
+    padding: 10px;
+    border-radius: 5px;
+    border: 2px solid #ccc;
+    font-size: 16px;
+    margin-right: 10px;
+}
+.card .newtask button {
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    background-color: #8052ec;
+    color: white;
+    cursor: pointer;
+}
+.card .tasks {
+    width: 100%;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.card .task {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: no-wrap;
+    word-wrap: break-word; /* Ensure long words break and wrap */
+    word-break: break-all;
+    white-space: normal;
+    overflow: hidden;
+    position: relative;
+}
+.card .task .taskname {
+    flex-grow: 1;
+    margin-right: 10px;
+    word-wrap: break-word;
+    word-break: break-all;
+    overflow: hidden;
+    white-space: normal;
+}
+
+.card .task .check-container {
+    margin-right: 10px;
+}
+
+.card .task .delete {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.card .task .delete.show {
+    display: block;
+    opacity: 1;
+}
+
+/* ////////////////////////////////////
+old task starts here */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+.header {
+    font-family: 'Poppins', sans-serif;
+    font-size: 29px; 
+    font-weight: bold; 
+    color: white; 
+    text-shadow: 2px 2px 4px rgba(29, 29, 29, 0.3); 
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+
+.card .reset-count,
+.card .toggle-numbering{
+    position: relative;
+    width: 12rem; /* Adjust width as needed */
+    height: 40px;
+    border-radius: 5px;
+    border: 2px solid #323232;
+    background-color: #ccc;
+    color: #323232;
+    cursor: pointer;
+    display: flex;
+    align-items: center; 
+    justify-content: center; 
+    box-shadow: 4px 4px #323232;
+    font-family: 'Poppins', sans-serif;
+    font-size: 15px;
+    font-weight: 700;
+    padding: 0 20px;
+    margin: 10px 0;
+    outline: none;
+    transition: transform 0.1s ease-in-out;
+}
+.card .reset-count:hover,
+.card .toggle-numbering:hover {
+    background-color: #8052ec;
+    color: #fff;
+    transform: scale(0.96);
+}
+
+/* displays the number of tasks completed today */
+.card .task-counter{
+    font-family: 'Poppins', sans-serif;
+    font-size: 18px;
+    color: #000;
+    padding: 0;
+    text-align: center;
+    margin-top: 5px;
+    font-style: italic;
+}
+
+
+
+/* /////////////////////////////////////////// */
+/* a container with the input and add new task button */
+.card .newtask {
+    position: relative;
+    padding: 20px 20px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+.card .newtask input {
+    width: 70%;
+    height: 16px;
+    font-family: 'Poppins',sans-serif;
+    font-size: 15px;
+    border: 2px solid #d1d3d4;
+    padding: 12px;
+    color: #111111;
+    font-weight: 700;
+    position: relative;
+    border-radius: 5px;
+}
+.card .newtask input:focus{
+    outline: none;
+    border-color: #8052ec;
+}
+.card .newtask button {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    border-radius: 5px;
+    border: 2px solid #323232;
+    background-color:#ccc;
+    color: #323232;
+    box-shadow: 4px 4px #323232; 
+    cursor: pointer;
+}
+.card .newtask button:hover {
+    background-color: #8052ec ;
+}
+
+
+
+/* ////////////////////////////////////// */
+/* the white container that contains all the tasks */
+#tasks{
+    background-color: #ffffff;
+    padding: 20px 20px;
+    margin-top: 30px;
+    border-radius: 10px;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+    width: 90%;
+    display: none;
+}
+
+/* each individual task's box */
+.task{
+    background-color: #ffffff;
+    height: 50px;
+    padding: 5px 10px;
+    margin-top: 10px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    border-bottom: 2px solid #d1d3d4;
+    transition: transform 0.2s ease-in-out, opacity 0.2s ease-in-out;
+    cursor: grab;
+}
+
+.task.dragging{
+    opacity: 0.5;
+    cursor: grabbing;
+}
+.task-placeholder{
+    height: 50px;
+    margin-top: 10px;
+    border-bottom: 2px solid #d1d3d4;
+    background-color:#f0f0f0;
+    border: 2px dashed #d1d3d4;
+    transition: all 0.2s ease-in-out; ;
+} 
+
+.task.completed .taskname{
+    text-decoration: line-through;
+    text-decoration-thickness: 2.2px;
+    flex-grow: 1;
+}
+.task{
+    justify-content: space-between;
+}
+
+.task span{
+    flex-grow: 1;
+}
+
+
+/* /////////////////////////////////////////
+the delete button */
+.task button{
+    background-color: #8052ec;
+    color: #ffffff;
+    height: 100%;
+    width: 34px;
+    height: 34px;
+    border-radius: 5px;
+    position: relative;
+    float: right;
+
+    border: 2px solid #323232;
+    box-shadow: 4px 4px #323232;
+    color: #323232;
+    cursor: pointer;
+
+    outline: none;
+    display: none;
+}
+.task button:hover {
+    background-color: #d45e5e; /* Slightly lighter color on hover */
+}
+
+
+
+/* ////////////////////////////////////////// */
+/* checklist button */
+.task .check-container{
+    margin-left: 10px;
+}
+.check-container{
+    --input-focus: #8052ec;
+    --input-out-of-focus: #ccc;
+    --bg-color: #fff;
+    --bg-color-alt: #666 ;
+    --main-color: #323232;
+    position: relative;
+    cursor: pointer;
+    margin-left: auto;
+    transition: margin-left 0.3s;
+    margin-right: 10px;
+}
+/* removes the actual checklist button */
+.check-container input {
+    position: absolute;
+    opacity: 0;
+}
+.checkmark {
+    width: 30px;
+    height: 30px;
+    position: relative;
+    border: 2px solid var(--main-color);
+    border-radius: 5px;
+    box-shadow: 4px 4px var(--main-color);
+    background-color: var(--input-out-of-focus);
+    transition: all 0.3s ease-in-out;
+}
+.check-container input:checked ~ .checkmark {
+    background-color: var(--input-focus);
+}
+.checkmark:after {
+    content: "";
+    width: 7px;
+    height: 15px;
+    position: absolute;
+    top: 2px;
+    left: 8px;
+    display: none;
+    border: solid var(--bg-color);
+    border-width: 0 2.5px 2.5px 0;
+    transform: rotate(45deg);
+}
+.check-container input:checked ~ .checkmark:hover{
+    transition: none;
+    background-color:#d45e5e;
+}
+.check-container input:checked ~ .checkmark:after {
+    display: block;
+}
+
+.task-description {
+    display: none; /* Initially hidden */
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 10px;
+    margin-top: 10px;
+    width: 100%; /* Adjust as needed */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+}
+.description-box{
+    display: none;
+    margin-top: 10px;
+    padding: 10px;
+    border: 1px solid #d1d3d4;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.description-box .visible{
+    display: block;
+}
